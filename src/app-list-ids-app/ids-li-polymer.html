@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="ids-li-polymer">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      li {
+        display: block;
+        margin-bottom: 30px;
+        cursor: pointer;
+        background: navy;
+        color: aliceblue;
+        height: 20px;
+        padding: 5px;
+        width: 200px;
+      }
+    </style>
+    <li id="[[id]]" data-id="[[dataId]]" data-dial-code="[[dataDialCode]]" on-ids-li-polymer="actionEvent">[[name]]</li>
+  </template>
+
+  <script>
+    /**
+     * `ids-li-polymer`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class IdsLiPolymer extends Polymer.Element {
+      static get is() {
+        return 'ids-li-polymer';
+      }
+
+      static get properties() {
+        return {
+          action: {
+            type: String,
+            value: 'ids-li-polymer'
+          },
+          name: {
+            type: String
+          },
+          id: {
+            type:String
+          },
+          dataId: {
+            type:String
+          },
+          dataDialCode: {
+            type:String
+          }
+        };
+      }
+
+      constructor() {
+        super();
+        this.addEventListener('click', this.actionEvent.bind(this));
+      }
+
+      actionEvent(e) {
+        
+        let action = this.dispatchEvent(new CustomEvent('action-event', {
+          detail: e,
+          bubbles: true,
+          composed: true
+        }));
+      }
+
+    }
+
+    window.customElements.define(IdsLiPolymer.is, IdsLiPolymer);
+  </script>
+</dom-module>

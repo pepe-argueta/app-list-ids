@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="ids-li-polymer.html">
+
+<dom-module id="app-list-ids-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Da clic</h2>
+    <ids-li-polymer id="C1" data-id="US" data-dial-code="1" name="USA" on-action-event="sendAlert"></ids-li-polymer>
+    <ids-li-polymer id="C2" data-id="CA" data-dial-code="1" name="CANADA" on-action-event="sendAlert"></ids-li-polymer>
+    <ids-li-polymer id="C3" data-id="FF" data-dial-code="3" name="FRANCE" on-action-event="sendAlert"></ids-li-polymer>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class AppListIdsApp extends Polymer.Element {
+      static get is() {
+        return 'app-list-ids-app';
+      }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'app-list-ids-app'
+          }
+        };
+      }
+
+      sendAlert(e) {
+        const li = e.detail.target;
+        alert(
+        `ID elemento: ${li.id}
+        ISO ID: ${li.dataset.id}
+        Dial Code: ${li.dataset.dialCode}`);
+      }
+    }
+
+    window.customElements.define(AppListIdsApp.is, AppListIdsApp);
+  </script>
+</dom-module>

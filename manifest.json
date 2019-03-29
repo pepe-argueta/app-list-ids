@@ -1,0 +1,6 @@
+{
+  "name": "app-list-ids",
+  "short_name": "app-list-ids",
+  "start_url": "/",
+  "display": "standalone"
+}
